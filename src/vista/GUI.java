@@ -1,4 +1,4 @@
-package myProject;
+package vista;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +11,10 @@ import java.awt.*;
 public class GUI extends JFrame {
 
     private Header headerProject;
+    private JPanel Seccion_1,Seccion_2;
+    private JLabel Label_1,Lasbe_2;
+    private ImageIcon imgen_1, imagen_2;
+    private GridBagConstraints constraints;
 
     /**
      * Constructor of GUI class
@@ -20,8 +24,8 @@ public class GUI extends JFrame {
 
         //Default JFrame configuration
         this.setTitle("Geek of master");
-        this.setSize(200,100);
-        //this.pack();
+//        this.setSize(400,500);
+        this.pack();
         this.setResizable(true);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -35,10 +39,21 @@ public class GUI extends JFrame {
     private void initGUI() {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
-        //Set up JComponents
-        headerProject = new Header("Header ...", Color.BLACK);
 
-        this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
+        //Obtiene el contenedor por defecto de la ventana y le pongo el nuevo layout "GridBagLayout"
+        this.getContentPane().setLayout(new GridBagLayout());
+        //Se crea un objeto "constrain" para configurar el Grib layout
+        constraints = new GridBagConstraints();
+
+        //Set up JComponents
+        //Se pone un el texto de cabecera, se igrasan las coordenadas constrain, se añade a la ventana
+        headerProject = new Header("The Geek Of Master", Color.BLACK);
+        constraints.gridwidth=4;
+        constraints.gridx=0;
+        constraints.gridy=0;
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.CENTER;
+        this.add(headerProject,constraints); //Change this line if you change JFrame Container's Layout
     }
 
     /**
