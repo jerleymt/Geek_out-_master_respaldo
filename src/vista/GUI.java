@@ -11,10 +11,11 @@ import java.awt.*;
 public class GUI extends JFrame {
 
     private Header headerProject;
-    private JPanel Seccion_1,Seccion_2;
+    private JPanel panelActivos,panelIncativos,panelPuntos,panelUsados;
     private JLabel dadosActivos,dadosIncativos,dadosPuntos,dadosUsados;
-    private ImageIcon imagen_activos, imagen_inactivos, imagen_puntos, imagen_usados;
+    private ImageIcon imagen_activos, imagen_inactivos, imagen_puntos, imagen_usados,imagen_dado;
     private GridBagConstraints constraints;
+    private JButton lanzar;
 
     /**
      * Constructor of GUI class
@@ -24,7 +25,6 @@ public class GUI extends JFrame {
 
         //Default JFrame configuration
         this.setTitle("Geek of master");
-//        this.setSize(400,500);
         this.pack();
         this.setResizable(true);
         this.setVisible(true);
@@ -46,6 +46,9 @@ public class GUI extends JFrame {
         constraints = new GridBagConstraints();
 
         //Set up JComponents
+        lanzar = new JButton("LANZAR DADOS");
+        lanzar.setSize(30,30);
+
         //Se pone un el texto de cabecera, se igrasan las coordenadas constrain, se añade a la ventana
         headerProject = new Header("The Geek Of Master", Color.BLACK);
         constraints.gridx=0;
@@ -56,56 +59,56 @@ public class GUI extends JFrame {
         this.add(headerProject,constraints); //Change this line if you change JFrame Container's Layout
 
         //Zona dedos Activos
+        panelActivos = new JPanel();
         imagen_activos = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosActivos = new JLabel(imagen_activos);
-        dadosActivos.setPreferredSize(new Dimension(250,170));
-        dadosActivos.setOpaque(true);
         constraints.gridx=1;
         constraints.gridy=1;
         constraints.gridwidth=4;
         constraints.gridheight=4;
         constraints.fill=GridBagConstraints.BOTH;
         constraints.anchor=GridBagConstraints.CENTER;
-        this.add(dadosActivos,constraints); //Change this line if you change JFrame Container's Layout
+        panelActivos.add(dadosActivos);
+        this.add(panelActivos,constraints); //Change this line if you change JFrame Container's Layout
 
         //Zona dedos inctivos
+        panelIncativos = new JPanel();
         imagen_inactivos = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosIncativos = new JLabel(imagen_inactivos);
-        dadosIncativos.setPreferredSize(new Dimension(250,170));
-        dadosIncativos.setOpaque(true);
         constraints.gridx=8;
         constraints.gridy=1;
         constraints.gridwidth=4;
         constraints.gridheight=4;
         constraints.fill=GridBagConstraints.BOTH;
         constraints.anchor=GridBagConstraints.CENTER;
-        this.add(dadosIncativos,constraints); //Change this line if you change JFrame Container's Layout
+        panelIncativos.add(dadosIncativos);
+        this.add(panelIncativos,constraints); //Change this line if you change JFrame Container's Layout
 
         //Zona dedos usados
+        panelUsados = new JPanel();
         imagen_usados = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosUsados = new JLabel(imagen_usados);
-        dadosUsados.setPreferredSize(new Dimension(250,170));
-        dadosUsados.setOpaque(true);
         constraints.gridx=1;
         constraints.gridy=5;
         constraints.gridwidth=4;
         constraints.gridheight=4;
         constraints.fill=GridBagConstraints.BOTH;
         constraints.anchor=GridBagConstraints.CENTER;
-        this.add(dadosUsados,constraints); //Change this line if you change JFrame Container's Layout
+        panelUsados.add(dadosUsados);
+        this.add(panelUsados,constraints); //Change this line if you change JFrame Container's Layout
 
         //Zona de dados puntos
+        panelPuntos = new JPanel();
         imagen_puntos = new ImageIcon(getClass().getResource("/recursos/puntos.png"));
         dadosPuntos = new JLabel(imagen_puntos);
-        dadosPuntos.setPreferredSize(new Dimension(250,170));
-        dadosPuntos.setOpaque(true);
         constraints.gridx=8;
         constraints.gridy=5;
         constraints.gridwidth=4;
         constraints.gridheight=4;
         constraints.fill=GridBagConstraints.BOTH;
         constraints.anchor=GridBagConstraints.CENTER;
-        this.add(dadosPuntos,constraints); //Change this line if you change JFrame Container's Layout
+        panelPuntos.add(dadosPuntos);
+        this.add(panelPuntos,constraints); //Change this line if you change JFrame Container's Layout
     }
 
     /**
