@@ -47,7 +47,6 @@ public class GUI extends JFrame {
 
         //Set up JComponents
         lanzar = new JButton("LANZAR DADOS");
-        lanzar.setSize(30,30);
 
         //Se pone un el texto de cabecera, se igrasan las coordenadas constrain, se añade a la ventana
         headerProject = new Header("The Geek Of Master", Color.BLACK);
@@ -58,18 +57,18 @@ public class GUI extends JFrame {
         constraints.anchor=GridBagConstraints.CENTER;
         this.add(headerProject,constraints); //Change this line if you change JFrame Container's Layout
 
-        //Zona dedos Activos
-        panelActivos = new JPanel();
-        imagen_activos = new ImageIcon(getClass().getResource("/recursos/zona.png"));
-        dadosActivos = new JLabel(imagen_activos);
+        //Zona dedos usados
+        panelUsados = new JPanel();
+        imagen_usados = new ImageIcon(getClass().getResource("/recursos/zona.png"));
+        dadosUsados = new JLabel(imagen_usados);
         constraints.gridx=1;
         constraints.gridy=1;
         constraints.gridwidth=4;
         constraints.gridheight=4;
         constraints.fill=GridBagConstraints.BOTH;
         constraints.anchor=GridBagConstraints.CENTER;
-        panelActivos.add(dadosActivos);
-        this.add(panelActivos,constraints); //Change this line if you change JFrame Container's Layout
+        panelUsados.add(dadosUsados);
+        this.add(panelUsados,constraints); //Change this line if you change JFrame Container's Layout
 
         //Zona dedos inctivos
         panelIncativos = new JPanel();
@@ -84,24 +83,11 @@ public class GUI extends JFrame {
         panelIncativos.add(dadosIncativos);
         this.add(panelIncativos,constraints); //Change this line if you change JFrame Container's Layout
 
-        //Zona dedos usados
-        panelUsados = new JPanel();
-        imagen_usados = new ImageIcon(getClass().getResource("/recursos/zona.png"));
-        dadosUsados = new JLabel(imagen_usados);
-        constraints.gridx=1;
-        constraints.gridy=5;
-        constraints.gridwidth=4;
-        constraints.gridheight=4;
-        constraints.fill=GridBagConstraints.BOTH;
-        constraints.anchor=GridBagConstraints.CENTER;
-        panelUsados.add(dadosUsados);
-        this.add(panelUsados,constraints); //Change this line if you change JFrame Container's Layout
-
         //Zona de dados puntos
         panelPuntos = new JPanel();
         imagen_puntos = new ImageIcon(getClass().getResource("/recursos/puntos.png"));
         dadosPuntos = new JLabel(imagen_puntos);
-        constraints.gridx=8;
+        constraints.gridx=1;
         constraints.gridy=5;
         constraints.gridwidth=4;
         constraints.gridheight=4;
@@ -109,6 +95,31 @@ public class GUI extends JFrame {
         constraints.anchor=GridBagConstraints.CENTER;
         panelPuntos.add(dadosPuntos);
         this.add(panelPuntos,constraints); //Change this line if you change JFrame Container's Layout
+
+        //Zona dedos Activos
+        panelActivos = new JPanel();
+        imagen_activos = new ImageIcon(getClass().getResource("/recursos/zona.png"));
+        dadosActivos = new JLabel(imagen_activos);
+        constraints.gridx=8;
+        constraints.gridy=5;
+        constraints.gridwidth=4;
+        constraints.gridheight=4;
+        constraints.fill=GridBagConstraints.BOTH;
+        constraints.anchor=GridBagConstraints.CENTER;
+
+        panelActivos.setLayout(new BorderLayout());//poner un layout al panel
+        panelActivos.add(dadosActivos);
+        this.add(panelActivos,constraints); //Change this line if you change JFrame Container's Layout
+
+        //Agrgar boton lanzar
+        constraints.gridx=8;
+        constraints.gridy=10;
+        constraints.gridwidth=4;
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.CENTER;
+
+        this.add(lanzar,constraints); //Change this line if you change JFrame Container's Layout
+
     }
 
     /**
