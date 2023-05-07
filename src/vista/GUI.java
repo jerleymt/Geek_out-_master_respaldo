@@ -15,7 +15,7 @@ public class GUI extends JFrame {
     private JLabel dadosActivos,dadosIncativos,dadosPuntos,dadosUsados;
     private ImageIcon imagen_activos, imagen_inactivos, imagen_puntos, imagen_usados,imagen_dado;
     private GridBagConstraints constraints; // referencias del grid
-    private JButton lanzar; // lanza los dados
+    private JButton lanzar, menu, atras, salir; // lanza los dados
 
     /**
      * Constructor of GUI class
@@ -26,6 +26,8 @@ public class GUI extends JFrame {
         //Default JFrame configuration
         this.setTitle("Geek of master");
 //        this.setSize(new Dimension(800,500));
+        this.setBackground(Color.BLACK);
+        this.isOpaque();
         this.pack();
         this.setResizable(true);
         this.setVisible(true);
@@ -58,14 +60,25 @@ public class GUI extends JFrame {
         constraints.anchor=GridBagConstraints.CENTER;
         this.add(headerProject,constraints); //Change this line if you change JFrame Container's Layout
 
+        //Boton de menu
+        menu = new JButton("MENU");
+        constraints.gridx=0;
+        constraints.gridy=0;
+        constraints.gridwidth=13; // combina 13 celdas para el titulo.
+        constraints.fill=GridBagConstraints.NONE;
+        constraints.anchor=GridBagConstraints.LINE_END;
+        this.add(menu,constraints); //Change this line if you change JFrame Container's Layout
+
+
         //Zona dados usados
         panelUsados = new JPanel();
         imagen_usados = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosUsados = new JLabel(imagen_usados);
+        panelUsados.setBackground(Color.BLACK);//preueba
         constraints.gridx=1;
         constraints.gridy=1;
-        constraints.gridwidth=4;
-        constraints.gridheight=4;
+        constraints.gridwidth=1;
+        constraints.gridheight=1;
         constraints.fill=GridBagConstraints.BOTH;
         constraints.anchor=GridBagConstraints.CENTER;
         panelUsados.add(dadosUsados);

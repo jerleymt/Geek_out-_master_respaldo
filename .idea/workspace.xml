@@ -5,27 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41a723f9-dfd4-479b-b52d-f1e1e5015958" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Geek0M_EF.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/recursos/dragon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/recursos/heart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/recursos/hero.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/recursos/meeple.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/recursos/point.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/recursos/puntos.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/recursos/rocket.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/recursos/zona.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/vista/GUI$Escucha.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/vista/GUI.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/vista/Header.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/template-meta.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Geek0M_EF/vista/GUI$Escucha.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/vista/GUI$Escucha.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Geek0M_EF/vista/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Geek0M_EF/vista/GUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vista/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +28,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Design/IdeaProjects/Juego de craps"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
