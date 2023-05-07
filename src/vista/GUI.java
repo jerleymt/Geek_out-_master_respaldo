@@ -2,6 +2,8 @@ package vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * This class is used for ...
@@ -16,6 +18,7 @@ public class GUI extends JFrame {
     private ImageIcon imagen_activos, imagen_inactivos, imagen_puntos, imagen_usados,imagen_dado;
     private GridBagConstraints constraints; // referencias del grid
     private JButton lanzar, menu, atras, salir; // lanza los dados
+    private Escucha escucha;
 
     /**
      * Constructor of GUI class
@@ -42,7 +45,7 @@ public class GUI extends JFrame {
     private void initGUI() {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
-
+        escucha = new Escucha();
         //Obtiene el contenedor por defecto de la ventana y le pongo el nuevo layout "GridBagLayout"
         this.getContentPane().setLayout(new GridBagLayout());
         //Se crea un objeto "constrain" para configurar el Grib layout
@@ -62,6 +65,7 @@ public class GUI extends JFrame {
 
         //Boton de menu
         menu = new JButton("MENU");
+        menu.addActionListener(escucha);
         constraints.gridx=0;
         constraints.gridy=0;
         constraints.gridwidth=13; // combina 13 celdas para el titulo.
@@ -150,7 +154,13 @@ public class GUI extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha {
+    private class Escucha implements ActionListener {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == menu){
+                JOptionPane.showMessageDialog(null,"It's ok");
+            }
+        }
     }
 }
