@@ -1,9 +1,12 @@
 package vista;
 
+import control.Controlador;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 /**
  * This class is used for ...
@@ -13,12 +16,17 @@ import java.awt.event.ActionListener;
 public class GUI extends JFrame {
 
     private Header headerProject;
-    private JPanel panelActivos,panelIncativos,panelPuntos,panelUsados;
+    private JPanel panelActivos,panelIncativos,panelPuntos,panelUsados, panelMenu;
     private JLabel dadosActivos,dadosIncativos,dadosPuntos,dadosUsados;
+    private JLabel[] dado;
     private ImageIcon imagen_activos, imagen_inactivos, imagen_puntos, imagen_usados,imagen_dado;
     private GridBagConstraints constraints; // referencias del grid
     private JButton lanzar, menu, atras, salir; // lanza los dados
     private Escucha escucha;
+    private Menu menu1;
+    private Container container;
+    private JLayeredPane layeredPane;
+    private Controlador control;
 
     /**
      * Constructor of GUI class
@@ -31,11 +39,13 @@ public class GUI extends JFrame {
 //        this.setSize(new Dimension(800,500));
         this.setBackground(Color.BLACK);
         this.isOpaque();
+//        this.setUndecorated(true);//Quita los trs botones de la ventana
         this.pack();
         this.setResizable(true);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     /**
@@ -44,8 +54,12 @@ public class GUI extends JFrame {
      */
     private void initGUI() {
         //Set up JFrame Container's Layout
+        control = new Controlador();
         //Create Listener Object and Control Object
         escucha = new Escucha();
+        menu1 = null;
+        //Creo dados;
+        dado = new JLabel[10];
         //Obtiene el contenedor por defecto de la ventana y le pongo el nuevo layout "GridBagLayout"
         this.getContentPane().setLayout(new GridBagLayout());
         //Se crea un objeto "constrain" para configurar el Grib layout
@@ -56,11 +70,11 @@ public class GUI extends JFrame {
         lanzar.addActionListener(escucha);
 
         atras = new JButton("ATRAS");
-        atras.setPreferredSize(new Dimension(20,20));
+        atras.setPreferredSize(new Dimension(100,50));
         atras.addActionListener(escucha);
 
         salir = new JButton("SALIR");
-        salir.setPreferredSize(new Dimension(20,20));
+        salir.setPreferredSize(new Dimension(100,50));
         salir.addActionListener(escucha);
 
         menu = new JButton("MENU");
@@ -88,7 +102,7 @@ public class GUI extends JFrame {
         panelUsados = new JPanel();
         imagen_usados = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosUsados = new JLabel(imagen_usados);
-        panelUsados.setBackground(Color.BLACK);//preueba
+//        panelUsados.setBackground(Color.BLACK);//preueba
         constraints.gridx=1;
         constraints.gridy=1;
         constraints.gridwidth=1;
@@ -100,7 +114,7 @@ public class GUI extends JFrame {
 
         //Zona_2 dedos inctivos
         panelIncativos = new JPanel();
-        panelIncativos.setBackground(Color.BLACK);//preueba
+//        panelIncativos.setBackground(Color.BLACK);//preueba
         imagen_inactivos = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosIncativos = new JLabel(imagen_inactivos);
         constraints.gridx=8;
@@ -114,7 +128,7 @@ public class GUI extends JFrame {
 
         //Zona_3 de dados puntos
         panelPuntos = new JPanel();
-        panelPuntos.setBackground(Color.BLACK);//preueba
+//        panelPuntos.setBackground(Color.BLACK);//preueba
         imagen_puntos = new ImageIcon(getClass().getResource("/recursos/puntos.png"));
         dadosPuntos = new JLabel(imagen_puntos);
         constraints.gridx=1;
@@ -126,11 +140,27 @@ public class GUI extends JFrame {
         panelPuntos.add(dadosPuntos);
         this.add(panelPuntos,constraints); //Change this line if you change JFrame Container's Layout
 
+        //Zona dados activos
+        imagen_dado =new ImageIcon(getClass().getResource("/recursos/1.png"));
+        dado[0] = new JLabel(imagen_dado);
+        dado[1] = new JLabel(imagen_dado);
+        dado[2] = new JLabel(imagen_dado);
+        dado[3] = new JLabel(imagen_dado);
+        dado[4] = new JLabel(imagen_dado);
+        dado[5] = new JLabel(imagen_dado);
+        dado[6] = new JLabel(imagen_dado);
+        dado[7] = new JLabel(imagen_dado);
+        dado[8] = new JLabel(imagen_dado);
+        dado[9] = new JLabel(imagen_dado);
+
+
         //Zona_4 dedos Activos
         panelActivos = new JPanel();
-        panelActivos.setBackground(Color.BLACK);//preueba
+//        panelActivos.setBackground(Color.BLACK);//preueba
+        panelActivos.setPreferredSize(new Dimension(200,200));
         imagen_activos = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosActivos = new JLabel(imagen_activos);
+//        dadosActivos.add(dado[0],BorderLayout.CENTER);
         constraints.gridx=8;
         constraints.gridy=5;
         constraints.gridwidth=4;
@@ -138,8 +168,17 @@ public class GUI extends JFrame {
         constraints.fill=GridBagConstraints.BOTH;
         constraints.anchor=GridBagConstraints.CENTER;
 
-        panelActivos.setLayout(new BorderLayout());//poner un layout al panel
-        panelActivos.add(dadosActivos);
+//        panelActivos.add(dadosActivos);
+        panelActivos.add(dado[0]);
+        panelActivos.add(dado[1]);
+        panelActivos.add(dado[2]);
+        panelActivos.add(dado[3]);
+        panelActivos.add(dado[4]);
+        panelActivos.add(dado[5]);
+        panelActivos.add(dado[6]);
+        panelActivos.add(dado[7]);
+        panelActivos.add(dado[8]);
+        panelActivos.add(dado[9]);
         this.add(panelActivos,constraints); //Change this line if you change JFrame Container's Layout
 
         //Zona_5 grgar boton lanzar
@@ -171,30 +210,63 @@ public class GUI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getActionCommand() == "MENU"){
-                Menu menu1 = new Menu();
-                menu1.add(atras,BorderLayout.CENTER);
-                menu1.add(salir,BorderLayout.SOUTH);
-                System.out.println("Menu");
-//                JOptionPane.showMessageDialog(null,"Menu");
-                JOptionPane.setRootFrame(menu1);
-            }
-            if (e.getSource() == lanzar){
-                JOptionPane.showMessageDialog(null,"Lanzar");
-                System.out.println("Lanzar");
 
+            if (e.getActionCommand() == "MENU"){
+                menu1 = new Menu();
+                menu.setEnabled(false);//Deshabilita el botón menu
+                panelMenu = new JPanel();
+                panelMenu.add(atras,BorderLayout.CENTER);
+                panelMenu.add(salir,BorderLayout.SOUTH);
+                menu1.add(panelMenu);
+//                menu1.pack();
+//                JOptionPane.showMessageDialog(null,"Menu");
             }
-            if (e.getActionCommand() == "ATRAS"){
-                JOptionPane.showMessageDialog(null,"Desea regresar");
-                System.out.println("atras");
+            if (e.getActionCommand() == "ATRAS" && menu1 != null){
+                menu1.dispose(); //Cierra la ventana de menu sin cerrar el programa
+                menu.setEnabled(true);// Habilita el boton menu
 
             }
             if (e.getSource() == salir){
-                int opcion = JOptionPane.showConfirmDialog(null,"Desea Salir");
-                if (opcion == 0){
+                int opcion = JOptionPane.showConfirmDialog(null, "¿Si oprime 'si' se cerrara el programa?", "Confirmación", JOptionPane.YES_NO_OPTION);
+                if (opcion == JOptionPane.YES_OPTION){
                     System.out.println("salir");
                     System.exit(0);
                 }
+                else if(opcion == JOptionPane.NO_OPTION){
+                    System.out.println("nada");
+                    menu1.dispose();
+                    menu.setEnabled(true);
+                }
+            }
+            if (e.getSource() == lanzar){
+                control.inicio(10);
+                Vector<Integer> face = control.getCara();
+//                JOptionPane.showMessageDialog(null,"Numero"+face.get(0));
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(0)+".png"));
+                dado[0].setIcon(imagen_dado);
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(1)+".png"));
+                dado[1].setIcon(imagen_dado);;
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(2)+".png"));
+                dado[2].setIcon(imagen_dado);
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(3)+".png"));
+                dado[3].setIcon(imagen_dado);
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(4)+".png"));
+                dado[4].setIcon(imagen_dado);
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(5)+".png"));
+                dado[5].setIcon(imagen_dado);
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(6)+".png"));
+                dado[6].setIcon(imagen_dado);
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(7)+".png"));
+                dado[7].setIcon(imagen_dado);
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(8)+".png"));
+                dado[8].setIcon(imagen_dado);
+                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(9)+".png"));
+                dado[9].setIcon(imagen_dado);
+                lanzar.setEnabled(false);
+
+//                mostrar_resultado.setText(control.getEstado_string().get(0));
+//                mensaje_salida.setText(control.getEstado_string().get(1));
+
             }
         }
     }
