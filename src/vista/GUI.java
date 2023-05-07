@@ -53,6 +53,18 @@ public class GUI extends JFrame {
 
         //Set up JComponents
         lanzar = new JButton("LANZAR DADOS");
+        lanzar.addActionListener(escucha);
+
+        atras = new JButton("ATRAS");
+        atras.setPreferredSize(new Dimension(20,20));
+        atras.addActionListener(escucha);
+
+        salir = new JButton("SALIR");
+        salir.setPreferredSize(new Dimension(20,20));
+        salir.addActionListener(escucha);
+
+        menu = new JButton("MENU");
+        menu.addActionListener(escucha);
 
         //Se pone un el texto de cabecera, se igrasan las coordenadas constrain, se añade a la ventana
         headerProject = new Header("The Geek Of Master", Color.BLACK);
@@ -63,9 +75,7 @@ public class GUI extends JFrame {
         constraints.anchor=GridBagConstraints.CENTER;
         this.add(headerProject,constraints); //Change this line if you change JFrame Container's Layout
 
-        //Boton de menu
-        menu = new JButton("MENU");
-        menu.addActionListener(escucha);
+        //Boton de Menu
         constraints.gridx=0;
         constraints.gridy=0;
         constraints.gridwidth=13; // combina 13 celdas para el titulo.
@@ -74,7 +84,7 @@ public class GUI extends JFrame {
         this.add(menu,constraints); //Change this line if you change JFrame Container's Layout
 
 
-        //Zona dados usados
+        //Zona_1 dados usados
         panelUsados = new JPanel();
         imagen_usados = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosUsados = new JLabel(imagen_usados);
@@ -88,8 +98,9 @@ public class GUI extends JFrame {
         panelUsados.add(dadosUsados);
         this.add(panelUsados,constraints); //Change this line if you change JFrame Container's Layout
 
-        //Zona dedos inctivos
+        //Zona_2 dedos inctivos
         panelIncativos = new JPanel();
+        panelIncativos.setBackground(Color.BLACK);//preueba
         imagen_inactivos = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosIncativos = new JLabel(imagen_inactivos);
         constraints.gridx=8;
@@ -101,8 +112,9 @@ public class GUI extends JFrame {
         panelIncativos.add(dadosIncativos);
         this.add(panelIncativos,constraints); //Change this line if you change JFrame Container's Layout
 
-        //Zona de dados puntos
+        //Zona_3 de dados puntos
         panelPuntos = new JPanel();
+        panelPuntos.setBackground(Color.BLACK);//preueba
         imagen_puntos = new ImageIcon(getClass().getResource("/recursos/puntos.png"));
         dadosPuntos = new JLabel(imagen_puntos);
         constraints.gridx=1;
@@ -114,8 +126,9 @@ public class GUI extends JFrame {
         panelPuntos.add(dadosPuntos);
         this.add(panelPuntos,constraints); //Change this line if you change JFrame Container's Layout
 
-        //Zona dedos Activos
+        //Zona_4 dedos Activos
         panelActivos = new JPanel();
+        panelActivos.setBackground(Color.BLACK);//preueba
         imagen_activos = new ImageIcon(getClass().getResource("/recursos/zona.png"));
         dadosActivos = new JLabel(imagen_activos);
         constraints.gridx=8;
@@ -129,7 +142,7 @@ public class GUI extends JFrame {
         panelActivos.add(dadosActivos);
         this.add(panelActivos,constraints); //Change this line if you change JFrame Container's Layout
 
-        //Agrgar boton lanzar
+        //Zona_5 grgar boton lanzar
         constraints.gridx=8;
         constraints.gridy=10;
         constraints.gridwidth=4;
@@ -158,8 +171,30 @@ public class GUI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == menu){
-                JOptionPane.showMessageDialog(null,"It's ok");
+            if (e.getActionCommand() == "MENU"){
+                Menu menu1 = new Menu();
+                menu1.add(atras,BorderLayout.CENTER);
+                menu1.add(salir,BorderLayout.SOUTH);
+                System.out.println("Menu");
+//                JOptionPane.showMessageDialog(null,"Menu");
+                JOptionPane.setRootFrame(menu1);
+            }
+            if (e.getSource() == lanzar){
+                JOptionPane.showMessageDialog(null,"Lanzar");
+                System.out.println("Lanzar");
+
+            }
+            if (e.getActionCommand() == "ATRAS"){
+                JOptionPane.showMessageDialog(null,"Desea regresar");
+                System.out.println("atras");
+
+            }
+            if (e.getSource() == salir){
+                int opcion = JOptionPane.showConfirmDialog(null,"Desea Salir");
+                if (opcion == 0){
+                    System.out.println("salir");
+                    System.exit(0);
+                }
             }
         }
     }
