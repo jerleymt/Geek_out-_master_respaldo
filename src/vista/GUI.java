@@ -168,17 +168,10 @@ public class GUI extends JFrame {
         constraints.fill=GridBagConstraints.BOTH;
         constraints.anchor=GridBagConstraints.CENTER;
 
-//        panelActivos.add(dadosActivos);
-        panelActivos.add(dado[0]);
-        panelActivos.add(dado[1]);
-        panelActivos.add(dado[2]);
-        panelActivos.add(dado[3]);
-        panelActivos.add(dado[4]);
-        panelActivos.add(dado[5]);
-        panelActivos.add(dado[6]);
-        panelActivos.add(dado[7]);
-        panelActivos.add(dado[8]);
-        panelActivos.add(dado[9]);
+        for (int i=0;i<=9;i++){
+            panelActivos.add(dado[i]);
+        }
+
         this.add(panelActivos,constraints); //Change this line if you change JFrame Container's Layout
 
         //Zona_5 grgar boton lanzar
@@ -239,30 +232,14 @@ public class GUI extends JFrame {
                 }
             }
             if (e.getSource() == lanzar){
-                control.inicio(10);
-                Vector<Integer> face = control.getCara();
-//                JOptionPane.showMessageDialog(null,"Numero"+face.get(0));
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(0)+".png"));
-                dado[0].setIcon(imagen_dado);
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(1)+".png"));
-                dado[1].setIcon(imagen_dado);;
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(2)+".png"));
-                dado[2].setIcon(imagen_dado);
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(3)+".png"));
-                dado[3].setIcon(imagen_dado);
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(4)+".png"));
-                dado[4].setIcon(imagen_dado);
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(5)+".png"));
-                dado[5].setIcon(imagen_dado);
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(6)+".png"));
-                dado[6].setIcon(imagen_dado);
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(7)+".png"));
-                dado[7].setIcon(imagen_dado);
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(8)+".png"));
-                dado[8].setIcon(imagen_dado);
-                imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(9)+".png"));
-                dado[9].setIcon(imagen_dado);
-                lanzar.setEnabled(false);
+                for (int i=0;i<=9;i++){
+                    control.inicio(10);
+                    Vector<Integer> face = control.getCara();
+    //                JOptionPane.showMessageDialog(null,"Numero"+face.get(0));
+                    imagen_dado =new ImageIcon(getClass().getResource("/recursos/"+face.get(0)+".png"));
+                    dado[i].setIcon(imagen_dado);
+                    System.out.println("test");
+                }
 
 //                mostrar_resultado.setText(control.getEstado_string().get(0));
 //                mensaje_salida.setText(control.getEstado_string().get(1));
